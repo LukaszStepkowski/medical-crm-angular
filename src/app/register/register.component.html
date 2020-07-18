@@ -1,26 +1,28 @@
-<form class="mx-auto w-50 px-md-5 py-md-5" action="" method="POST">
+<div *ngIf="error" class="alert alert danger">{{error}}</div>
+<h2 class="mx-auto">Register</h2>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="mx-auto w-50 px-md-5 py-md-5">
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name">
+            <input type="text" formControlName="name" class="form-control">
         </div>
         <div class="form-group col-md-6">
             <label for="surname">Surname</label>
-            <input type="text" class="form-control" id="surname">
+            <input type="text" formControlName="surname" class="form-control">
         </div>
     </div>
     <div class="form-group">
         <label for="login">E-mail</label>
-        <input type="email" class="form-control" id="login">
+        <input type="email" formControlName="login" class="form-control">
     </div>
     <div class="form-group">
         <label for="pesel">PESEL</label>
-        <input type="text" class="form-control" id="pesel">
+        <input type="text" formControlName="pesel" class="form-control">
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password">
+            <input type="password" formControlName="password" class="form-control">
             <small id="passwordHelp" class="form-text text-muted">Password must consist of at least 8 characters and contain at least 1 capital letter, 1 small letter,
                  1 digit and one special character</small>
         </div>
@@ -33,5 +35,11 @@
         <input type="checkbox" class="form-check-input" id="regulations">
         <label for="regulations" class="form-check-label">I have read the Terms and Conditions.</label>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Register
+        </button>
+        <a routerLink="/" class="btn btn-link">Cancel</a>
+    </div>
 </form>
