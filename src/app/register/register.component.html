@@ -1,5 +1,7 @@
 <div *ngIf="error" class="alert alert danger">{{error}}</div>
-<h2 class="mx-auto">Register</h2>
+<div class="mx-auto py-md-5" style="width: 200px;">
+<h2>Register</h2>
+</div>
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="mx-auto w-50 px-md-5 py-md-5">
     <div class="form-row">
         <div class="form-group col-md-6">

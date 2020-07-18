@@ -30,8 +30,8 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      login: ['', Validators.required],
-      password: ['', Validators.required]
+      login: '',
+      password: ''
     });
 
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';

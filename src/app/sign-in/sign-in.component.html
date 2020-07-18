@@ -1,1 +1,23 @@
-<p>sign-in works!</p>
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+<div class="mx-auto py-md-5" style="width: 200px;">
+    <h2>Login</h2>
+</div>
+<div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mx-auto w-25 px-md-5 py-md-5">
+        <div class="form-group">
+            <label for="login">Login</label>
+            <input type="text" class="form-control" formControlName="login">
+        </div>
+        <div class="form-group">
+            <label for="password">Passwod</label>
+            <input type="text" class="form-control" formControlName="password">
+        </div>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Login
+            </button>
+            <a routerLink="/register" class="btn btn-link">Register</a>
+        </div>
+    </form>
+</div>
