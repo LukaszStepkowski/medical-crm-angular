@@ -30,11 +30,11 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      name: [''],
-      surname: [''],
-      login: [''],
-      pesel: [''],
-      password: ['']
+      name: '',
+      surname: '',
+      login: '',
+      pesel: '',
+      password: ''
     });
   }
 
@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
 
     this.loading = true;
     this.userService.register(this.registerForm.value)
-      .pipe(first())
+    .pipe(first())
       .subscribe(
         data => {
           this.router.navigate(['/'], { queryParams: { registered: true } });
