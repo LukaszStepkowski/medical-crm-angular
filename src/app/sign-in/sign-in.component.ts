@@ -16,6 +16,7 @@ export class SignInComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   error: string;
+  success: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,8 +31,8 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      login: '',
-      password: ''
+      login: ['', Validators.required],
+      password: ['', Validators.required]
     });
 
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';

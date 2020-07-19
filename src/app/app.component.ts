@@ -21,6 +21,6 @@ export class AppComponent {
 
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(['/']);
+    this.router.navigate(['/sing-in']);
   }
 }
