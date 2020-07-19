@@ -12,13 +12,15 @@ import { RegisterComponent } from './register/register.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { from } from 'rxjs';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     RegisterComponent,
-    SignInComponent
+    SignInComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

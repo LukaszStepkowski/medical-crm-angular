@@ -4,5 +4,6 @@ export class User {
     passwodr: string;
     name: string;
     surname: string;
+    pesel: string;
     token: string;
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from './_services';
+import { User } from './_models';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { AuthenticationService } from './_services';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  currentUser: any;
+  currentUser: User;
   title = 'medical-crm-angular';
 
   constructor(
