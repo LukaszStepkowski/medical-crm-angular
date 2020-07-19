@@ -1,3 +1,15 @@
+<nav class="navbar navbar-expand-md navbar-dark" style="background-color: seagreen;" *ngIf="currentUser">
+    <h3 class="text-light px-md-1">Medical CRM Project</h3>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-md-1">
+            <li class="nav-item active">
+                <a class="text-light" routerLink="/home">Home</a>
+            </li>
+        </ul>
+    </div>
+    <a class="mr-md-2" routerLink="/register" (click)="logout()">Logout</a>
+</nav>
+
 <nav class="navbar navbar-expand-md navbar-dark" style="background-color: seagreen;">
     <h3 class="text-light px-md-1">Medical CRM Project</h3>
     <div class="collapse navbar-collapse">
