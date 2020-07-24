@@ -10,9 +10,9 @@ import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegisterComponent } from './register/register.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-import { from } from 'rxjs';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { UserComponent } from './user/user.component';
+import { AlertComponent } from './_components'
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { UserComponent } from './user/user.component';
     HomeComponent,
     RegisterComponent,
     SignInComponent,
-    UserComponent
+    UserComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

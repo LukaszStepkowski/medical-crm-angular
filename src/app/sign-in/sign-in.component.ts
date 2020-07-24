@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AuthenticationService } from '../_services'
+import { AlertService, AuthenticationService } from '../_services'
 
 @Component({
   selector: 'app-sign-in',
@@ -15,17 +15,16 @@ export class SignInComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
-  error: string;
-  success: string;
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private alertService: AlertService
   ) {
     if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/user']);
     }
   }
 
@@ -43,6 +42,8 @@ export class SignInComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
+    this.alertService.clear();
+
     if (this.loginForm.invalid) {
       return;
     }
@@ -55,7 +56,7 @@ export class SignInComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         error => {
-          this.error = error;
+          this.alertService.error(error);
           this.loading = false;
         }
       )
