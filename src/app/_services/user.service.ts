@@ -13,7 +13,7 @@ export class UserService {
     }
 
     register(user) {
-        return this.http.post(`http://localhost:8099/users/patients`, user);
+        return this.http.post(`/users/patients`, user);
     }
 
     delete(id: number) {
