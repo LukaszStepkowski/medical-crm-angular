@@ -19,11 +19,12 @@ export class AuthenticationService {
         return this.currentUserSubject.value;
     }
 
-    login(username, password) {
-        return this.http.post<any>(`http://localhost:8099/users/authenticate`, { username, password })
+    login(login: string, password: string) {
+        return this.http.post<any>('http://localhost:8099/users/authenticate', { login, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify(user));
+                user.authdata = window.btoa(login + ':' + password);
+                localStorage.setItem('currentUser', JSON.stringify(user))
                 this.currentUserSubject.next(user);
                 return user;
             }));

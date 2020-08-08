@@ -8,12 +8,12 @@ import { User } from '../_models';
 export class UserService {
     constructor(private http: HttpClient) { }
 
-    get(id) {
-        return this.get(`http://localhost:8099/users/${id}`);
+    get() {
+        return this.http.get<User>('http://localhost:8099/patients/${user.id}');
     }
 
     register(user) {
-        return this.http.post(`http://localhost:8099/users/patients`, user);
+        return this.http.post('http://localhost:8099/patients', user);
     }
 
     delete(id: number) {
