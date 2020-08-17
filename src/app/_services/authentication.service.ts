@@ -19,12 +19,12 @@ export class AuthenticationService {
         return this.currentUserSubject.value;
     }
 
-    username(username: string, password: string) {
-        return this.http.post<any>('http://localhost:8099/patients/authenticate', { username, password })
+    login(username: string, password: string) {
+        return this.http.post<any>('http://localhost:8099/authenticate', { username, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 user.authdata = window.btoa(username + ':' + password);
-                localStorage.setItem('currentUser', JSON.stringify(user))
+                sessionStorage.setItem('currentUser', JSON.stringify(user))
                 this.currentUserSubject.next(user);
                 return user;
             }));
@@ -32,7 +32,7 @@ export class AuthenticationService {
 
     logout() {
         // remove user from local storage and set current user to null
-        localStorage.removeItem('currentUser');
+        sessionStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
     }
 }

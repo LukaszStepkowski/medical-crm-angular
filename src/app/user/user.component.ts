@@ -11,13 +11,13 @@ import { UserService, AuthenticationService} from '../_services';
 })
 export class UserComponent {
   loading = false;
-  user: User;
+  user = JSON.parse(sessionStorage.getItem('currentUser'));
 
   constructor(private userService: UserService) { }
 
   ngOnInit(){
     this.loading = true;
-    this.userService.get().pipe(first()).subscribe(user => {
+    this.userService.get(this.user.id).pipe(first()).subscribe(user => {
       this.loading = false;
       this.user = user;
     });

@@ -47,7 +47,7 @@ export class SignInComponent implements OnInit {
     }
 
     this.loading = true;
-    this.authenticationService.username(this.f.username.value, this.f.password.value)
+    this.authenticationService.login(this.f.username.value, this.f.password.value)
       .pipe(first())
       .subscribe(
         data => {

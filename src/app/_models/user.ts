@@ -5,5 +5,7 @@ export class User {
     name: string;
     surname: string;
     pesel: string;
+    npwz: string;
+    role: string;
     authdata?: string;
 }
