@@ -12,7 +12,8 @@ import { RegisterComponent } from './register/register.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { ErrorInterceptor, BasicAuthInterceptor } from './_helpers';
 import { UserComponent } from './user/user.component';
-import { AlertComponent } from './_components'
+import { AlertComponent } from './_components';
+import { AppointmentComponent } from './appointment/appointment.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AlertComponent } from './_components'
     RegisterComponent,
     SignInComponent,
     UserComponent,
-    AlertComponent
+    AlertComponent,
+    AppointmentComponent
   ],
   imports: [
     BrowserModule,
