@@ -21,11 +21,11 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="login">E-mail</label>
-        <input type="email" formControlName="login" class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f.login.errors }">
-        <div *ngIf="submitted && f.login.errors" class="invalid-feedback">
-            <div *ngIf="f.login.errors.required">Login is required</div>
+        <label for="username">E-mail</label>
+        <input type="email" formControlName="username" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Login is required</div>
         </div>
     </div>
     <div class="form-group">
