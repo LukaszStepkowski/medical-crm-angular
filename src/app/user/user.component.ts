@@ -9,17 +9,18 @@ import { UserService, AuthenticationService} from '../_services';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent implements OnInit {
-  currentUser: User;
+export class UserComponent {
+  loading = false;
+  user = JSON.parse(sessionStorage.getItem('currentUser'));
 
-  constructor(
-    private authenticationService: AuthenticationService,
-    private userService: UserService
-  ) {
-    this.currentUser = this.authenticationService.currentUserValue;
-   }
+  constructor(private userService: UserService) { }
 
   ngOnInit(){
+    this.loading = true;
+    this.userService.get(this.user.id).pipe(first()).subscribe(user => {
+      this.loading = false;
+      this.user = user;
+    });
   }
 
 }

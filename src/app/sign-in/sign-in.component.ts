@@ -15,13 +15,13 @@ export class SignInComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
+  error: '';
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService,
-    private alertService: AlertService
+    private authenticationService: AuthenticationService
   ) {
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(['/user']);
@@ -30,7 +30,7 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      login: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required]
     });
 
@@ -42,24 +42,22 @@ export class SignInComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    this.alertService.clear();
-
     if (this.loginForm.invalid) {
       return;
     }
 
     this.loading = true;
-    this.authenticationService.login(this.f.login.value, this.f.password.value)
+    this.authenticationService.login(this.f.username.value, this.f.password.value)
       .pipe(first())
       .subscribe(
         data => {
           this.router.navigate([this.returnUrl]);
         },
         error => {
-          this.alertService.error(error);
+          this.error = error;
           this.loading = false;
         }
-      )
+      );
 
   }
 

@@ -3,7 +3,10 @@
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-md-1">
             <li class="nav-item active">
-                <a class="text-light" routerLink="/home">Home</a>
+                <a class="text-light" routerLink="/home" *ngIf="!currentUser">Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="text-light" routerLink="/user" *ngIf="currentUser">User Panel</a>
             </li>
         </ul>
     </div>

@@ -10,9 +10,10 @@ import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegisterComponent } from './register/register.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { ErrorInterceptor, BasicAuthInterceptor } from './_helpers';
 import { UserComponent } from './user/user.component';
-import { AlertComponent } from './_components'
+import { AlertComponent } from './_components';
+import { AppointmentComponent } from './appointment/appointment.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AlertComponent } from './_components'
     RegisterComponent,
     SignInComponent,
     UserComponent,
-    AlertComponent
+    AlertComponent,
+    AppointmentComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,7 @@ import { AlertComponent } from './_components'
     ReactiveFormsModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
