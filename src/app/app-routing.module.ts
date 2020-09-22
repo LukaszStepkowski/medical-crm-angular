@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: "user", component: UserComponent, canActivate: [AuthGuard]},
   {path: "appointment", component: AppointmentComponent, canActivate: [AuthGuard]},
 
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '/home' }
 
 ];
 
